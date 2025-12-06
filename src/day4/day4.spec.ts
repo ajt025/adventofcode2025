@@ -15,4 +15,8 @@ describe('On Day 4', () =>{
     it(`part1`, ()=>{
         expect(day4.solveForPartOne(input)).toBe('13');
     })
+
+    it(`part2`, ()=>{
+        expect(day4.solveForPartTwo(input)).toBe('43');
+    })
 });

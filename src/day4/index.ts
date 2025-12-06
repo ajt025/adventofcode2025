@@ -52,7 +52,37 @@ class Day4 extends Day {
     }
 
     solveForPartTwo(input: string): string {
-        return input;
+        // repeat BFS on entire grid until no change in grid
+        let grid: string[][] = parseGrid(input);
+        let result = 0;
+
+        while (true) {
+            // deep copy grid to setup for next iteration
+            let nextGrid: string[][] = grid.map(x => x.slice());
+            let currentStepResult = 0;
+
+            for (let i = 0; i < grid.length; i++) {
+                for (let j = 0; j < grid[i].length; j++) {
+                    if (grid[i][j] === '@') {
+                        if (this.bfs(grid, i, j)) {
+                            ++currentStepResult;
+                            // mark this spot as clear for next iteration
+                            nextGrid[i][j] = '.';
+                        }
+                    }
+                }
+            }
+
+            // if no new spots were found, end algorithm and return
+            if (currentStepResult === 0) {
+                break;
+            } else {
+                result += currentStepResult;
+                grid = nextGrid; // save changes for next iteration
+            }
+        }
+
+        return String(result);
     }
 }
 
