@@ -15,5 +15,9 @@ describe('On Day 5', () =>{
         "32\n";
     it(`part1`, ()=>{
         expect(day5.solveForPartOne(input)).toBe('3');
-    })
+    });
+
+    it(`part2`, ()=>{
+        expect(day5.solveForPartTwo(input)).toBe('14');
+    });
 });

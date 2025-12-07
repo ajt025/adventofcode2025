@@ -66,7 +66,21 @@ class Day5 extends Day {
     }
 
     solveForPartTwo(input: string): string {
-        return input;
+        const parsedInput = parseLinesWithSplit(input);
+        // convert to numbers, sort by interval start
+        const parsedRanges = parsedInput[0]
+            .map(x => x.split("-"))
+            .map(x => [Number(x[0]), Number(x[1])]);
+        // merge the intervals
+        const mergedRanges = this.mergeRanges(parsedRanges);
+
+        // overall idea:
+        // sort ranges by start + combine overlapping...
+        // sum of: each interval end - interval start
+        return mergedRanges.reduce((sum, interval) =>
+            sum + (interval[1] - interval[0] + 1),
+            0
+        ).toString();
     }
 }
 
