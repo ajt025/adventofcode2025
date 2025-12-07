@@ -8,5 +8,9 @@ describe('On Day 6', () =>{
         "*   +   *   +  \n";
     it(`part1`, ()=>{
         expect(day6.solveForPartOne(input)).toBe('4277556');
+    });
+
+    it(`part2`, ()=>{
+        expect(day6.solveForPartTwo(input)).toBe('3263827');
     })
 });
